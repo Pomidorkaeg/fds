@@ -10,25 +10,25 @@
     
     <!-- Preload critical assets -->
     <link rel="preload" as="image" href="/fds/lovable-uploads/e711e51e-481c-438c-987e-2aa5f999290a.png" />
+    <link rel="preload" as="style" href="/fds/assets/index.css" />
+    <link rel="preload" as="script" href="/fds/assets/js/index.js" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
     
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
+      // Single Page App - GitHub Pages redirect script
       (function(l) {
-        if (l.search[1] === '/') {
+        if (l.search[1] === '/' ) {
           var decoded = l.search.slice(1).split('&').map(function(s) { 
             return s.replace(/~and~/g, '&')
           }).join('?');
           window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
+              l.pathname.slice(0, -1) + decoded + l.hash
           );
         }
-      }(window.location))
+      }(window.location));
     </script>
     
     <style>
@@ -82,7 +82,7 @@
         display: block;
       }
     </style>
-    <script type="module" crossorigin src="/fds/assets/js/index-CFFezNUQ.js"></script>
+    <script type="module" crossorigin src="/fds/assets/js/index-DQ9dgqw8.js"></script>
     <link rel="modulepreload" crossorigin href="/fds/assets/js/vendor-BQ8dfCE3.js">
     <link rel="modulepreload" crossorigin href="/fds/assets/js/ui-SKwEO5GY.js">
     <link rel="stylesheet" crossorigin href="/fds/assets/index-N4Xjh39K.css">
@@ -102,10 +102,18 @@
       </div>
     </div>
     <script>
-      // Handle loading timeout
-      setTimeout(function() {
+      // Handle loading timeout and errors
+      window.addEventListener('error', function(e) {
+        console.error('Error loading resource:', e);
         var loadingEl = document.getElementById('loadingIndicator');
         if (loadingEl) {
+          loadingEl.classList.add('timeout');
+        }
+      });
+
+      setTimeout(function() {
+        var loadingEl = document.getElementById('loadingIndicator');
+        if (loadingEl && !loadingEl.classList.contains('timeout')) {
           loadingEl.classList.add('timeout');
         }
       }, 10000);
